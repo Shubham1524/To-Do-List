@@ -1,15 +1,34 @@
 import React from 'react'
+import Done from './Done'
 
-export default function DoneList() {
+export default function DoneList({ doneList, setTasks, tasks, setDoneList }) {
+
+  const markAsUnreed = (task) => {
+    const newDoneList = []
+
+    for (let i = 0; i < doneList.length; i++) {
+      const type = (+task.target.id === doneList[i].id)
+      if (type) {
+        setTasks([...tasks, doneList[i]])
+      }
+      if (!type) {
+        newDoneList.push(doneList[i])
+      }
+    }
+    setDoneList(newDoneList)
+  }
+  
   return (
-    <div>
-        <h4 className='font-medium text-lg'>Things done</h4>
-        {<div className='flex flex-col gap-1'>
-            <div className='flex gap-2'>
-                <input checked type="checkbox" name="" id="done" />
-                <label htmlFor="done">done</label>
-            </div>
-        </div>}
+    <>
+    <h4 className='font-medium text-lg'>Things done</h4>
+    <div className='flex flex-col gap-1'>
+      {
+        doneList.map(
+          (task) => <Done id={task.id} task={task.task} onChange={markAsUnreed} />
+          )
+      }
     </div>
-  )
+  </>
+)
+
 }
