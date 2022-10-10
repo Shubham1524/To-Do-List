@@ -28,8 +28,6 @@ function App() {
   const currentTask = JSON.parse(localStorage.getItem("current tasks"))
   const completeTask = JSON.parse(localStorage.getItem("complete tasks"))
 
-  console.log(currentTask, completeTask)
-
   const [tasks, setTasks] = useState(currentTask || dummy)
   const [value, inputValue] = useState("")
   const [isAddTaskOpen, setAddTaskOpen] = useState(false)
