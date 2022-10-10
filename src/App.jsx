@@ -25,11 +25,19 @@ function App() {
     }
   ]
 
-  const [tasks, setTasks] = useState(dummy)
+  const currentTask = JSON.parse(localStorage.getItem("current tasks"))
+  const completeTask = JSON.parse(localStorage.getItem("complete tasks"))
+
+  console.log(currentTask, completeTask)
+
+  const [tasks, setTasks] = useState(currentTask) || (dummy)
   const [value, inputValue] = useState("")
   const [isAddTaskOpen, setAddTaskOpen] = useState(false)
   const [addToDoBtn, setToDoBtn] = useState(true)
-  const [doneList, setDoneList] = useState(dummyDone)
+  const [doneList, setDoneList] = useState(completeTask) || (dummyDone)
+
+  localStorage.setItem("current tasks", JSON.stringify(tasks))
+  localStorage.setItem("complete tasks", JSON.stringify(doneList))
 
   const timeStamp = Date.now()
 
