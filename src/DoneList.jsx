@@ -25,18 +25,18 @@ export default function DoneList({ doneList, setTasks, tasks, setDoneList }) {
       console.log(type)
     }
   }
-  
+
   return (
-    <div className='max-w-md'>
-    <h4 className='font-medium text-xl'>Things done</h4>
-    <div className='flex flex-col gap-1'>
-      {
-        doneList.map(
-          (task) => <Done id={task.id} task={task.task} onChange={markAsUnreed} onClick={removeTask} doneList={doneList} setDoneList={setDoneList} />
+    <>
+      <h4 className='font-medium text-xl'>Things done</h4>
+      <div className='flex flex-col gap-1'>
+        {
+          doneList.map(
+            (task) => <Done id={task.id} task={task.task} onChange={markAsUnreed} onClick={removeTask} doneList={doneList} setDoneList={setDoneList} />
           )
-      }
-    </div>
-  </div>
-)
+        }
+      </div>
+    </>
+  )
 
 }
