@@ -27,8 +27,8 @@ export default function DoneList({ doneList, setTasks, tasks, setDoneList }) {
   }
   
   return (
-    <>
-    <h4 className='font-medium text-lg'>Things done</h4>
+    <div className='max-w-md'>
+    <h4 className='font-medium text-xl'>Things done</h4>
     <div className='flex flex-col gap-1'>
       {
         doneList.map(
@@ -36,7 +36,7 @@ export default function DoneList({ doneList, setTasks, tasks, setDoneList }) {
           )
       }
     </div>
-  </>
+  </div>
 )
 
 }

@@ -34,12 +34,15 @@ export default function ToDoList({ setTasks, setDoneList, doneList, createNewTas
                 <h1 className='text-3xl font-bold'>Things to get done</h1>
                 <div className='flex flex-col gap-2'>
                     <div>
-                        <div className='font-medium text-lg'>
+                        <div className='font-medium text-xl'>
                             <h4>Things to do</h4>
                         </div>
                         <div className='flex flex-col gap-1'>
                             {
                                 tasks.map((task) => <ToDo id={task.id} task={task.task} onChange={markAsDone} />)
+                            }
+                            {
+                                (tasks.length == 0) && <p className='text-gray-500 font-medium text-sm py-2 my-2 rounded-lg text-center border'>There is nothing to do...</p>
                             }
                         </div>
                     </div>
