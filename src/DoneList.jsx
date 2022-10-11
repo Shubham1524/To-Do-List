@@ -17,6 +17,14 @@ export default function DoneList({ doneList, setTasks, tasks, setDoneList }) {
     }
     setDoneList(newDoneList)
   }
+
+  const removeTask = (event) => {
+    console.log(event.target.taskid)
+    for (let i = 0; i < doneList.length; i++) {
+      const type = (+event.target.taskid === doneList[i].id)
+      console.log(type)
+    }
+  }
   
   return (
     <>
@@ -24,7 +32,7 @@ export default function DoneList({ doneList, setTasks, tasks, setDoneList }) {
     <div className='flex flex-col gap-1'>
       {
         doneList.map(
-          (task) => <Done id={task.id} task={task.task} onChange={markAsUnreed} />
+          (task) => <Done id={task.id} task={task.task} onChange={markAsUnreed} onClick={removeTask} doneList={doneList} setDoneList={setDoneList} />
           )
       }
     </div>
